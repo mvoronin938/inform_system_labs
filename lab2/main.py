@@ -57,7 +57,7 @@ class ModelDM:
     def alter_ratio_K(self, B):
         sum_bix = sum([(B - (i + 1) + 1) * data['xi'] for i, data in enumerate(self.table)])
 
-        equation_2 = self.N / self.kaknibud(B)
+        equation_2 = self.N / self.b_plus_1(B)
         equation_1 = self.N / sum_bix
 
         return equation_1, equation_2

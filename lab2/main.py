@@ -1,9 +1,16 @@
+import os
 import json
 
 
+class Config:
+    EPSILON = float(os.environ['EPSILON'])
+    B_RIGHT = float(os.environ['B_RIGHT'])
+
+
 class ModelDM:
-    def __init__(self) -> None:
-        self.EPSILON = 0.01
+    def __init__(self, config: Config) -> None:
+        self.epsilon = config.EPSILON
+        self.b_right = config.B_RIGHT
 
     @property
     def table(self):
@@ -24,27 +31,26 @@ class ModelDM:
 
     def b_plus_1(self, B):
         return (B + 1) * self.sum_xi - self.sum_ix
-  
 
     def nonlinear_equation(self):
-        B_left = self.N
-        B_right = 45
-        idx = 0
-        
-        while idx < 2000 and ((B_right - B_left) > self.EPSILON):
-            idx += 1
-            B_mid = (B_left + B_right) / 2
-            
-            f_left = self.left_nonlinear_equation(B_left) - self.right_nonlinear_equation(B_left)
-            f_mid = self.left_nonlinear_equation(B_mid) - self.right_nonlinear_equation(B_mid)
+        b_left = self.N
+        b_right = self.b_right
 
-            if (f_left * f_mid) < 0:
-                B_right = B_mid
+        for index in range(1000):
+            if (b_right - b_left) > self.epsilon:
+                break
             else:
-                B_left = B_mid
+                b_mid = (b_left + b_right) / 2
+                
+                f_left = self.left_nonlinear_equation(b_left) - self.right_nonlinear_equation(b_left)
+                f_mid = self.left_nonlinear_equation(b_mid) - self.right_nonlinear_equation(b_mid)
 
-        return int((B_left + B_right) / 2)
+                if (f_left * f_mid) < 0:
+                    b_right = b_mid
+                else:
+                    b_left = b_mid
 
+        return int((b_left + b_right) / 2)
 
     def left_nonlinear_equation(self, B):
         result = 0
@@ -65,17 +71,8 @@ class ModelDM:
 
         return equation
 
-    def alter_ratio_K(self, B):
-        sum_bix = sum([(B - (data['x'] + 1) + 1) * data['xi'] for data in self.table])
-
-        equation_2 = self.N / self.b_plus_1(B)
-        equation_1 = self.N / sum_bix
-
-        return equation_1, equation_2
-
     def ratio_K(self, B):
         return self.N / self.b_plus_1(B)
-
 
     def avg_time_x(self, B):
         K = self.ratio_K(B)
@@ -89,10 +86,13 @@ class ModelDM:
         return left * sum_
 
 
+config = Config()
 
-model_dm = ModelDM()
+model_dm = ModelDM(config)
+
 B = model_dm.nonlinear_equation()
 K = model_dm.ratio_K(B)
+
 X_n_1 = model_dm.avg_time_x(B)
 tk = model_dm.test_time(B)
 

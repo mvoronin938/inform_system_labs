@@ -99,3 +99,10 @@ tk = model_dm.test_time(B)
 print('----')
 print(f'B:\t{B}\nK:\t{K}\nXn+1:\t{X_n_1}\ntk:\t{tk}')
 print('----')
+
+
+p = '[1, 2, 3]'
+
+a = list(p)
+
+print()

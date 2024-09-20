@@ -60,7 +60,7 @@ related_factor = absolute_criteria / config.BASIC_PRINC_REL
 
 related_factor_arr = [related_factor]
 
-related_factor = sum(related_factor_arr) / len(related_factor_arr)
+quality_factor = sum(related_factor_arr) / len(related_factor_arr)
 
 print(f'''
 P(Y) trouble_free_probability: {trouble_free_probability}
@@ -74,5 +74,9 @@ Tпi avg_time_trans_val: {avg_time_trans}
 Pjkm final_estimate_val: {final_estimate}
 
 Pji absolute_criteria: {absolute_criteria}
+
+Kij related_factor: {related_factor}
+
+Kiф quality_factor: {quality_factor}
 '''
-      )
+)

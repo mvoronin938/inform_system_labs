@@ -130,4 +130,4 @@ build/
 # Lab-specific ignores
 # =========================
 
-!lab4/lib/spotbugs-4.8.6/**
+!lab4/lab/lib/spotbugs-4.8.6/**

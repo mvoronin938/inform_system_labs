@@ -3,8 +3,8 @@ import json
 
 
 class Config:
-    EPSILON = float(os.environ['EPSILON'])
-    B_RIGHT = float(os.environ['B_RIGHT'])
+    EPSILON = float(os.environ['LAB2_EPSILON'])
+    B_RIGHT = float(os.environ['LAB2_B_RIGHT'])
 
 
 class ModelDM:

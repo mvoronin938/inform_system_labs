@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="lab4" default="spotbugs" basedir=".">
+    <!-- Define project properties -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="spotbugs.home" value="lib/spotbugs-4.8.6"/>
+
+    <!-- Task definition for SpotBugs -->
+    <taskdef name="spotbugs"
+             classname="edu.umd.cs.findbugs.anttask.FindBugsTask"
+             classpath="${spotbugs.home}/lib/spotbugs-ant.jar"/>
+
+    <!-- Clean previous build -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <!-- Compile source code -->
+    <target name="compile" depends="clean">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+    </target>
+
+    <!-- Run SpotBugs analysis -->
+    <target name="spotbugs" depends="compile">
+        <spotbugs home="${spotbugs.home}" output="html" outputFile="${build.dir}/spotbugs-report.html">
+            <sourcepath location="${src.dir}"/>
+            <class location="${classes.dir}"/>
+        </spotbugs>
+    </target>
+</project>

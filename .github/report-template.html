@@ -1,6 +1,70 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Проектирование информационных систем</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+      }
+      h1 {
+        text-align: center;
+        color: #4a90e2;
+      }
+      .program-result {
+        margin: 20px 0;
+      }
+      .program-title {
+        font-size: 1.2em;
+        color: #555;
+        border-bottom: 2px solid #4a90e2;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+      }
+      .program-output {
+        background-color: #eef;
+        padding: 15px;
+        border-left: 4px solid #4a90e2;
+        white-space: pre-wrap;
+        font-family: "Courier New", Courier, monospace;
+        border-radius: 4px;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
   <body>
-    <h1>{{test}}</h1>
-    <h1>Meow</h1>
+    <div class="container">
+      <h1>Проектирование информационных систем</h1>
+
+      <div class="program-result">
+        <div class="program-title">Лабораторная работа №2:</div>
+        <div class="program-output">{{lr2_output}}</div>
+      </div>
+
+      <div class="program-result">
+        <div class="program-title">Лабораторная работа №3</div>
+        <div class="program-output">{{lr3_1_output}}</div>
+        <div class="program-output">{{lr3_2_output}}</div>
+        <div class="program-output">{{lr3_3_output}}</div>
+      </div>
+
+      <div class="program-result">
+        <div class="program-title">Лабораторная работа №5</div>
+        <div class="program-output">{{lr5_output}}</div>
+      </div>
+    </div>
   </body>
 </html>

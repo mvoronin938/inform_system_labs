@@ -4,16 +4,16 @@ import random
 
 
 class Config:
-    NUM_REFUSE_Q = float(os.environ['NUM_REFUSE_Q'])
-    NUM_EXP_N = int(os.environ['NUM_EXP_N'])
+    NUM_REFUSE_Q = float(os.environ['LAB5_NUM_REFUSE_Q'])
+    NUM_EXP_N = int(os.environ['LAB5_NUM_EXP_N'])
 
-    AVG_TIME_RECOV_TB = os.environ['AVG_TIME_RECOV_TB'].split(',')
-    CUR_TIME_RECOV_TB_DOP = float(os.environ['CUR_TIME_RECOV_TB_DOP'])
+    AVG_TIME_RECOV_TB = os.environ['LAB5_AVG_TIME_RECOV_TB'].split(',')
+    CUR_TIME_RECOV_TB_DOP = float(os.environ['LAB5_CUR_TIME_RECOV_TB_DOP'])
 
-    ACTUAL_DURATION_TPI = os.environ['ACTUAL_DURATION_TPI'].split(',')
-    VALID_TIME_TPI_DOP = float(os.environ['VALID_TIME_TPI_DOP'])
+    ACTUAL_DURATION_TPI = os.environ['LAB5_ACTUAL_DURATION_TPI'].split(',')
+    VALID_TIME_TPI_DOP = float(os.environ['LAB5_VALID_TIME_TPI_DOP'])
 
-    BASIC_PRINC_REL = float(os.environ['BASIC_PRINC_REL'])
+    BASIC_PRINC_REL = float(os.environ['LAB5_BASIC_PRINC_REL'])
 
     @property
     def avg_time_recov_Tb(self) -> list:

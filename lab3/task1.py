@@ -2,11 +2,11 @@ import math
 import os
 
 class Config:
-    num_targets = int(os.environ['NUM_TARGETS'])
-    num_measurements_per_target = int(os.environ['NUM_MEASUREMENTS_PER_TARGET'])
-    num_tracked_params = int(os.environ['NUM_TRACKED_PARAMS'])
-    num_computed_params_per_target = int(os.environ['NUM_COMPUTED_PARAMS_PER_TARGET'])
-    L = float(os.environ['L'])
+    num_targets = int(os.environ['LAB3_NUM_TARGETS'])
+    num_measurements_per_target = int(os.environ['LAB3_NUM_MEASUREMENTS_PER_TARGET'])
+    num_tracked_params = int(os.environ['LAB3_NUM_TRACKED_PARAMS'])
+    num_computed_params_per_target = int(os.environ['LAB3_NUM_COMPUTED_PARAMS_PER_TARGET'])
+    L = float(os.environ['LAB3_L'])
 
 config = Config
 

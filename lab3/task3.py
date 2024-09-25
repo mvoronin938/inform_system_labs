@@ -1,11 +1,11 @@
 import os
 import json
 class Config:
-    l = float(os.environ['L'])
-    v_next = int(os.environ['V_NEXT'])
-    r0 = int(os.environ['R0'])
-    vol = json.loads(os.environ['VOL'])
-    b = json.loads(os.environ['B'])
+    l = float(os.environ['LAB3_L'])
+    v_next = int(os.environ['LAB3_V_NEXT'])
+    r0 = int(os.environ['LAB3_R0'])
+    vol = json.loads(os.environ['LAB3_VOL'])
+    b = json.loads(os.environ['LAB3_B'])
 
 config = Config
 

@@ -1,0 +1,53 @@
+name: Our labs pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - feat/**
+
+    paths:
+      - lab2/**
+      - lab3/**
+      - lab4/**
+      - lab5/**
+      - .github/workflows/deploy.yml
+
+jobs:
+  build-html:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v3
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+      - name: Run Python script and replace output in HTML
+        run: |
+          chmod +x .github/generate-html.sh
+          .github/generate-html.sh
+        env:
+          EPSILON: 0.01
+          B_RIGHT: 100
+  
+      - name: Setup to GitHub Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '.github/out/'
+      - name: Deploy to pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        
